@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Bike.cs" />
+    <Compile Include="Models\BikeType.cs" />
     <Compile Include="Models\InventoryContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

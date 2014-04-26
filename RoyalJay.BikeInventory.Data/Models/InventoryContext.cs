@@ -16,5 +16,6 @@ namespace RoyalJay.BikeInventory.Data.Models
         }
 
         public DbSet<Bike> Bikes { get; set; }
+        public DbSet<BikeType> BikeTypes { get; set; }
     }
 }
