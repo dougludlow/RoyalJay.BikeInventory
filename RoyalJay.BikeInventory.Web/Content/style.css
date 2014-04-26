@@ -15,6 +15,7 @@ textarea {
 }
 .body-content {
   position: relative;
+  min-height: 300px;
 }
 .loader {
   position: absolute;

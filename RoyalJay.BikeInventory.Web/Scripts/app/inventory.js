@@ -3,6 +3,8 @@
 
     inventory.init = function () {
 
+        var $modal = $('.bike-modal');
+
         ko.validation.init({
             insertMessages: false
         });
@@ -13,11 +15,19 @@
 
         $(document).on('click', '.btn.create', function () {
             inventory.vm.createBike();
-            $('.bike-modal').modal();
+            $modal.modal();
         });
 
         $(document).on('click', '.btn.save', function () {
-            inventory.vm.saveBike();
+            var saved = inventory.vm.saveBike(function () {
+                $modal.modal('hide');
+            });
+        });
+
+        $(document).on('click', '.btn.details', function () {
+            var bike = ko.dataFor(this);
+            inventory.vm.viewBike(bike);
+            $modal.modal();
         });
     };
 
@@ -27,20 +37,18 @@
         this.manager = new breeze.EntityManager('breeze/inventory');
 
         this.bike = ko.observable();
-        this.bikes = ko.observable([]);
+        this.bikes = ko.observableArray([]);
+        this.types = ko.observableArray([]);
         this.editing = ko.observable(false);
-        this.errors = {};
         this.loaded = ko.observable(false);
         this.fatal = ko.observable(false);
 
-        this.errors = ko.validation.group(self.bike);
 
         this.init = function () {
             self.manager.fetchMetadata().then(function () {
 
                 self.manager.metadataStore.registerEntityTypeCtor('Bike', null, function (bike) {
                     inventory.helpers.addValidationRules(bike);
-                    console.log('initialized');
                 });
 
                 breeze.EntityQuery.from('Bikes')
@@ -51,18 +59,19 @@
                         self.bikes(data.results);
                         self.loaded(true);
                     })
-                    .fail(function (error) {
-                        console.log(error);
-                        self.fatal(true);
-                        self.loaded(true);
+                    .fail(fatalError)
+                    .catch(fatalError);
+
+                breeze.EntityQuery.from('BikeTypes')
+                    .using(self.manager)
+                    .execute()
+                    .then(function (data) {
+                        self.types(data.results);
                     })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+                    .fail(fatalError)
+                    .catch(fatalError);
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+            .catch(fatalError);
 
             this.createBike = function () {
                 var store = self.manager.metadataStore,
@@ -82,25 +91,41 @@
                 self.bike(bike);
             };
 
-            this.saveBike = function () {
-
+            this.saveBike = function (success, fail) {
                 var bike = self.bike(),
-                    state = bike.entityAspect.entityState;
+                    state = bike.entityAspect.entityState,
+                    errors = ko.validation.group(self.bike());
 
-                if (self.errors().length == 0) {
+                if (errors().length === 0) {
 
-                    if (state.isDetached())
+                    if (state.isDetached()) {
                         self.manager.addEntity(bike);
+                        state = bike.entityAspect.entityState
+                    }
 
-                    //state = bike.entityAspect.entityState;
-
-                    if (state.isAdded() || state.isModified())
-                        self.manager.saveChanges();
+                    if (state.isAdded() || state.isModified()) {
+                        self.manager.saveChanges()
+                            .then(function (data) {
+                                self.bikes.push(bike);
+                                typeof success === 'function' && success();
+                            })
+                            .fail(function (error) {
+                                typeof fail === 'function' && fail();
+                                console.log(error);
+                            })
+                            .catch(fatalError);
+                    }
                 }
                 else 
-                    self.errors.showAllMessages();
+                    errors.showAllMessages();
             };
         };
+
+        function fatalError(error) {
+            console.log(error);
+            self.fatal(true);
+            self.loaded(true);
+        }
     }
 
     inventory.helpers = (function () {

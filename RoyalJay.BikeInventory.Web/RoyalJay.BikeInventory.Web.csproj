@@ -296,7 +296,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\_BikeDetail.cshtml" />
     <Content Include="Views\Home\_BikeList.cshtml" />
-    <Content Include="Views\Home\_BikeEmpty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
