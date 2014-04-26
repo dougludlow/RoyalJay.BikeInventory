@@ -4,7 +4,7 @@
     <p>
         <button class="btn btn-primary create">Add Bike</button>
     </p>
-    <table class="table">
+    <table class="table table-striped">
 
         <thead>
             <tr>
@@ -33,7 +33,7 @@
                 <td data-bind="text: Type() && Type().Name()"></td>
                 <td data-bind="text: Price"></td>
                 <td data-bind="text: Quantity"></td>
-                <td data-bind="text: InStorage"></td>
+                <td data-bind="text: InStorage() ? 'Yes' : 'No'"></td>
                 <td>
                     <button class="btn btn-default details">Details</button>
                     <button class="btn btn-danger delete">Delete</button>

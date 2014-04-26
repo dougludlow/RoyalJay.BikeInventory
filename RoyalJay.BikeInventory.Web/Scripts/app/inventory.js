@@ -13,6 +13,21 @@
         inventory.vm.init();
         ko.applyBindings(inventory.vm);
 
+        $modal.on('hidden.bs.modal', function (e) {
+            inventory.vm.manager.rejectChanges();
+            inventory.vm.editing(false);
+        });
+
+        $(document).on('click', '.btn.details', function () {
+            var bike = ko.dataFor(this);
+            inventory.vm.viewBike(bike);
+            $modal.modal();
+        });
+
+        $(document).on('click', '.btn.edit', function () {
+            inventory.vm.editing(true);
+        });
+
         $(document).on('click', '.btn.create', function () {
             inventory.vm.createBike();
             $modal.modal();
@@ -22,12 +37,6 @@
             var saved = inventory.vm.saveBike(function () {
                 $modal.modal('hide');
             });
-        });
-
-        $(document).on('click', '.btn.details', function () {
-            var bike = ko.dataFor(this);
-            inventory.vm.viewBike(bike);
-            $modal.modal();
         });
     };
 
@@ -42,7 +51,6 @@
         this.editing = ko.observable(false);
         this.loaded = ko.observable(false);
         this.fatal = ko.observable(false);
-
 
         this.init = function () {
             self.manager.fetchMetadata().then(function () {
