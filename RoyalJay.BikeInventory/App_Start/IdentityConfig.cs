@@ -3,9 +3,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
-using RoyalJay.BikeInventory.Models;
+using RoyalJay.BikeInventory.Web.Models;
 
-namespace RoyalJay.BikeInventory
+namespace RoyalJay.BikeInventory.Web
 {
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
 

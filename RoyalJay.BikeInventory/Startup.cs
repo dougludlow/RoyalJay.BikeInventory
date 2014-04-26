@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(RoyalJay.BikeInventory.Startup))]
+[assembly: OwinStartup(typeof(RoyalJay.BikeInventory.Web.Startup))]
 
-namespace RoyalJay.BikeInventory
+namespace RoyalJay.BikeInventory.Web
 {
     public partial class Startup
     {

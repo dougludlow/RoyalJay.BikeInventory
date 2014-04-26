@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace RoyalJay.BikeInventory.Areas.HelpPage.ModelDescriptions
+namespace RoyalJay.BikeInventory.Web.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

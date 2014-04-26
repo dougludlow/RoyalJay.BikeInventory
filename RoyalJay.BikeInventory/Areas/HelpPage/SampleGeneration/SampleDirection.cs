@@ -1,4 +1,4 @@
-namespace RoyalJay.BikeInventory.Areas.HelpPage
+namespace RoyalJay.BikeInventory.Web.Areas.HelpPage
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

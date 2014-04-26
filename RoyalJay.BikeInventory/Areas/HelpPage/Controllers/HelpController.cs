@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using RoyalJay.BikeInventory.Areas.HelpPage.ModelDescriptions;
-using RoyalJay.BikeInventory.Areas.HelpPage.Models;
+using RoyalJay.BikeInventory.Web.Areas.HelpPage.ModelDescriptions;
+using RoyalJay.BikeInventory.Web.Areas.HelpPage.Models;
 
-namespace RoyalJay.BikeInventory.Areas.HelpPage.Controllers
+namespace RoyalJay.BikeInventory.Web.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

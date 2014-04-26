@@ -5,9 +5,9 @@ using System.Reflection;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using System.Xml.XPath;
-using RoyalJay.BikeInventory.Areas.HelpPage.ModelDescriptions;
+using RoyalJay.BikeInventory.Web.Areas.HelpPage.ModelDescriptions;
 
-namespace RoyalJay.BikeInventory.Areas.HelpPage
+namespace RoyalJay.BikeInventory.Web.Areas.HelpPage
 {
     /// <summary>
     /// A custom <see cref="IDocumentationProvider"/> that reads the API documentation from an XML documentation file.

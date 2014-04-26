@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace RoyalJay.BikeInventory.Controllers
+namespace RoyalJay.BikeInventory.Web.Controllers
 {
     [Authorize]
     public class ValuesController : ApiController

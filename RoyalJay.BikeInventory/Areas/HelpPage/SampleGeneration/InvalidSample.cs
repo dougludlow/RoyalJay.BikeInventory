@@ -1,6 +1,6 @@
 using System;
 
-namespace RoyalJay.BikeInventory.Areas.HelpPage
+namespace RoyalJay.BikeInventory.Web.Areas.HelpPage
 {
     /// <summary>
     /// This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace RoyalJay.BikeInventory.Controllers
+namespace RoyalJay.BikeInventory.Web.Controllers
 {
     public class HomeController : Controller
     {

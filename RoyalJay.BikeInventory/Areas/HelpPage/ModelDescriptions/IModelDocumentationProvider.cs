@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace RoyalJay.BikeInventory.Areas.HelpPage.ModelDescriptions
+namespace RoyalJay.BikeInventory.Web.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

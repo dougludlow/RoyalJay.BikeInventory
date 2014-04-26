@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace RoyalJay.BikeInventory.Areas.HelpPage
+namespace RoyalJay.BikeInventory.Web.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

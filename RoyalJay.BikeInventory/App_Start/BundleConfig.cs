@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace RoyalJay.BikeInventory
+namespace RoyalJay.BikeInventory.Web
 {
     public class BundleConfig
     {

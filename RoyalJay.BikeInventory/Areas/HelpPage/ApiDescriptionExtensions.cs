@@ -3,7 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.Http.Description;
 
-namespace RoyalJay.BikeInventory.Areas.HelpPage
+namespace RoyalJay.BikeInventory.Web.Areas.HelpPage
 {
     public static class ApiDescriptionExtensions
     {

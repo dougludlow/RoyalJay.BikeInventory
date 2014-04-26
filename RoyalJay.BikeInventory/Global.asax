@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="RoyalJay.BikeInventory.WebApiApplication" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="RoyalJay.BikeInventory.Web.Web.WebApiApplication" Language="C#" %>

@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace RoyalJay.BikeInventory.Areas.HelpPage.ModelDescriptions
+namespace RoyalJay.BikeInventory.Web.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {

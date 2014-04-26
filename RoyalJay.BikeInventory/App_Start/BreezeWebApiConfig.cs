@@ -1,8 +1,8 @@
 using System.Web.Http;
 
 [assembly: WebActivator.PreApplicationStartMethod(
-    typeof(RoyalJay.BikeInventory.App_Start.BreezeWebApiConfig), "RegisterBreezePreStart")]
-namespace RoyalJay.BikeInventory.App_Start {
+    typeof(RoyalJay.BikeInventory.Web.App_Start.BreezeWebApiConfig), "RegisterBreezePreStart")]
+namespace RoyalJay.BikeInventory.Web.App_Start {
   ///<summary>
   /// Inserts the Breeze Web API controller route at the front of all Web API routes
   ///</summary>

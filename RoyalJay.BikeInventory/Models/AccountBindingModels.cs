@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace RoyalJay.BikeInventory.Models
+namespace RoyalJay.BikeInventory.Web.Models
 {
     // Models used as parameters to AccountController actions.
 

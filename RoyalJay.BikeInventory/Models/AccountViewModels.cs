@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace RoyalJay.BikeInventory.Models
+namespace RoyalJay.BikeInventory.Web.Models
 {
     // Models returned by AccountController actions.
 

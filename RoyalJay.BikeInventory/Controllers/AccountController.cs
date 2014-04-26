@@ -13,11 +13,11 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using RoyalJay.BikeInventory.Models;
-using RoyalJay.BikeInventory.Providers;
-using RoyalJay.BikeInventory.Results;
+using RoyalJay.BikeInventory.Web.Models;
+using RoyalJay.BikeInventory.Web.Providers;
+using RoyalJay.BikeInventory.Web.Results;
 
-namespace RoyalJay.BikeInventory.Controllers
+namespace RoyalJay.BikeInventory.Web.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]

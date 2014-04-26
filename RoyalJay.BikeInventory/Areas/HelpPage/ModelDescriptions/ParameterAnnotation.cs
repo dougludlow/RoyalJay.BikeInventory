@@ -1,6 +1,6 @@
 using System;
 
-namespace RoyalJay.BikeInventory.Areas.HelpPage.ModelDescriptions
+namespace RoyalJay.BikeInventory.Web.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterAnnotation
     {

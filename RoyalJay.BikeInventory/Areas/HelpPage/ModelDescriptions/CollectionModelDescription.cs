@@ -1,4 +1,4 @@
-namespace RoyalJay.BikeInventory.Areas.HelpPage.ModelDescriptions
+namespace RoyalJay.BikeInventory.Web.Areas.HelpPage.ModelDescriptions
 {
     public class CollectionModelDescription : ModelDescription
     {

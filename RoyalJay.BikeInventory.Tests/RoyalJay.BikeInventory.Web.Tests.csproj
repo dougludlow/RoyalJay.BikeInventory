@@ -9,8 +9,8 @@
     <ProjectGuid>{02431062-9843-4773-8B10-8362E917FD96}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RoyalJay.BikeInventory.Tests</RootNamespace>
-    <AssemblyName>RoyalJay.BikeInventory.Tests</AssemblyName>
+    <RootNamespace>RoyalJay.BikeInventory.Web.Tests</RootNamespace>
+    <AssemblyName>RoyalJay.BikeInventory.Web.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -102,9 +102,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoyalJay.BikeInventory\RoyalJay.BikeInventory.csproj">
+    <ProjectReference Include="..\RoyalJay.BikeInventory\RoyalJay.BikeInventory.Web.csproj">
       <Project>{F5EE91F8-FE81-464B-95A7-B1DC61518281}</Project>
-      <Name>RoyalJay.BikeInventory</Name>
+      <Name>RoyalJay.BikeInventory.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

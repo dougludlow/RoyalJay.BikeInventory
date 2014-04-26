@@ -1,9 +1,9 @@
 ﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RoyalJay.BikeInventory;
-using RoyalJay.BikeInventory.Controllers;
+using RoyalJay.BikeInventory.Web;
+using RoyalJay.BikeInventory.Web.Controllers;
 
-namespace RoyalJay.BikeInventory.Tests.Controllers
+namespace RoyalJay.BikeInventory.Web.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest

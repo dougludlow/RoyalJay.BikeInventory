@@ -9,9 +9,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using RoyalJay.BikeInventory.Models;
+using RoyalJay.BikeInventory.Web.Models;
 
-namespace RoyalJay.BikeInventory.Providers
+namespace RoyalJay.BikeInventory.Web.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {

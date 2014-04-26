@@ -7,10 +7,10 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using RoyalJay.BikeInventory.Providers;
-using RoyalJay.BikeInventory.Models;
+using RoyalJay.BikeInventory.Web.Providers;
+using RoyalJay.BikeInventory.Web.Models;
 
-namespace RoyalJay.BikeInventory
+namespace RoyalJay.BikeInventory.Web
 {
     public partial class Startup
     {

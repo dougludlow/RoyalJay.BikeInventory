@@ -10,10 +10,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using RoyalJay.BikeInventory.Areas.HelpPage.ModelDescriptions;
-using RoyalJay.BikeInventory.Areas.HelpPage.Models;
+using RoyalJay.BikeInventory.Web.Areas.HelpPage.ModelDescriptions;
+using RoyalJay.BikeInventory.Web.Areas.HelpPage.Models;
 
-namespace RoyalJay.BikeInventory.Areas.HelpPage
+namespace RoyalJay.BikeInventory.Web.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {
