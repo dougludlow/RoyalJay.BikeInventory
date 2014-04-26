@@ -327,6 +327,12 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RoyalJay.BikeInventory.Data\RoyalJay.BikeInventory.Data.csproj">
+      <Project>{1ccdd097-2025-494f-8bc2-1c83459b9e04}</Project>
+      <Name>RoyalJay.BikeInventory.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
