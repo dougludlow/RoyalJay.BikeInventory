@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalJay.BikeInventory", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalJay.BikeInventory.Tests", "RoyalJay.BikeInventory.Tests\RoyalJay.BikeInventory.Tests.csproj", "{02431062-9843-4773-8B10-8362E917FD96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalJay.BikeInventory.Data", "RoyalJay.BikeInventory.Data\RoyalJay.BikeInventory.Data.csproj", "{1CCDD097-2025-494F-8BC2-1C83459B9E04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{02431062-9843-4773-8B10-8362E917FD96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02431062-9843-4773-8B10-8362E917FD96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02431062-9843-4773-8B10-8362E917FD96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CCDD097-2025-494F-8BC2-1C83459B9E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CCDD097-2025-494F-8BC2-1C83459B9E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CCDD097-2025-494F-8BC2-1C83459B9E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CCDD097-2025-494F-8BC2-1C83459B9E04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
