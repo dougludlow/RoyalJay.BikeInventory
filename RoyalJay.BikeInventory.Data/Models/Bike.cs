@@ -20,12 +20,21 @@ namespace RoyalJay.BikeInventory.Data.Models
         public string Model { get; set; }
         public string Color { get; set; }
 
+        [Display(Name = "Type")]
         public int TypeId { get; set; }
 
+        [DataType(DataType.Currency)]
         public double Price { get; set; }
         public int Quantity { get; set; }
 
+        [Display(Name = "In Storage?")]
         public bool InStorage { get; set; }
+
+        [Display(Name = "Last Modified")]
+        public DateTime LastModified { get; set; }
+
+        [Display(Name = "Last Modified By")]
+        public string LastModifiedUsername { get; set; }
 
         public virtual BikeType Type { get; set; }
     }

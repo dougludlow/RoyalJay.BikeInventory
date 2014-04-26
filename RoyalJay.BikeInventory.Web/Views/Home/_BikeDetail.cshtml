@@ -1,0 +1,119 @@
+﻿@model RoyalJay.BikeInventory.Data.Models.Bike
+
+<div class="modal fade bike-details">
+    <div class="modal-dialog">
+        <div class="modal-content" data-bind="with: bike">
+            <div class="modal-header">
+                <h4 class="modal-title">
+                    <span data-bind="visible: root.editing() && !Id()">
+                        Add a New Bike
+                    </span>
+                    <span data-bind="visible: root.editing() && Id()">
+                        Edit Bike
+                    </span>
+                    <span data-bind="visible: !root.editing()">
+                        Bike Details
+                    </span>
+                </h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-horizontal">
+                    <div class="validation-summary text-danger"></div>
+
+                    <div class="form-group" data-bind="validationElement: Code">
+                        @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10" data-bind="visible: root.editing">
+                            <input id=" code" type="text" class="form-control" data-bind="value: Code" />
+                            <span class="text-danger" data-bind="validationMessage: Code"></span>
+                        </div>
+                        <div class="col-md-10" data-bind="visible: !root.editing(), text: Code"></div>
+                    </div>
+
+                    <div class="form-group" data-bind="validationElement: Name">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input id="Name" type="text" class="form-control" data-bind="value: Name" />
+                            <span class="text-danger" data-bind="validationMessage: Name"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-bind="validationElement: Description">
+                        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input id="Description" type="text" class="form-control" data-bind="value: Description" />
+                            <span class="text-danger" data-bind="validationMessage: Description"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-bind="validationElement: Brand">
+                        @Html.LabelFor(model => model.Brand, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input id="Brand" type="text" class="form-control" data-bind="value: Brand" />
+                            <span class="text-danger" data-bind="validationMessage: Brand"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-bind="validationElement: Model">
+                        @Html.LabelFor(model => model.Model, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input id="Model" type="text" class="form-control" data-bind="value: Model" />
+                            <span class="text-danger" data-bind="validationMessage: Model"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-bind="validationElement: Color">
+                        @Html.LabelFor(model => model.Color, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input id="Color" type="text" class="form-control" data-bind="value: Color" />
+                            <span class="text-danger" data-bind="validationMessage: Color"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-bind="validationElement: TypeId">
+                        @Html.LabelFor(model => model.TypeId, "TypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input id="TypeId" type="text" class="form-control" data-bind="value: TypeId" />
+                            <span class="text-danger" data-bind="validationMessage: TypeId"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-bind="validationElement: Price">
+                        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input id="Price" type="text" class="form-control" data-bind="value: Price" />
+                            <span class="text-danger" data-bind="validationMessage: Price"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-bind="validationElement: Quantity">
+                        @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input id="Quantity" type="text" class="form-control" data-bind="value: Quantity" />
+                            <span class="text-danger" data-bind="validationMessage: Quantity"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-bind="validationElement: InStorage">
+                        @Html.LabelFor(model => model.InStorage, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                <input id="InStorage" type="checkbox" data-bind="value: InStorage" />
+                                <span class="text-danger" data-bind="validationMessage: InStorage"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary create" data-bind="text: Id() ? 'Save' : 'Create'"></button>
+                <button type="button" class="btn btn-default cancel" data-dismiss="modal">Cancel</button>
+            </div>
+
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,59 @@
+﻿@model IEnumerable<RoyalJay.BikeInventory.Data.Models.Bike>
+
+<p>
+    <button class="btn btn-primary edit">Add Bike</button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Type.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InStorage)
+        </th>
+        <th></th>
+    </tr>
+
+    <tr data-bind="foreach: bikes">
+        <td data-bind="text: Type().Name"></td>
+        <td data-bind="text: Code"></td>
+        <td data-bind="text: Name"></td>
+        <td data-bind="text: Description"></td>
+        <td data-bind="text: Brand"></td>
+        <td data-bind="text: Model"></td>
+        <td data-bind="text: Color"></td>
+        <td data-bind="text: Price"></td>
+        <td data-bind="text: Quantity"></td>
+        <td data-bind="text: InStorage"></td>
+        <td>
+            <button class="btn btn-default edit">Edit</button>
+            <button class="btn btn-default details">Details</button>
+            <button class="btn btn-danger delete">Delete</button>
+        </td>
+    </tr>
+
+</table>
