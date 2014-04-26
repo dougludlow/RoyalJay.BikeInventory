@@ -10,7 +10,7 @@ namespace RoyalJay.BikeInventory.Data.Models
     public class InventoryContext : DbContext
     {
         public InventoryContext()
-            : base("name=BikeInventoryContext")
+            : base("name=InventoryContext")
         {
 
         }
