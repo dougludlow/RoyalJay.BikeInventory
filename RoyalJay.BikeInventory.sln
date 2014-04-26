@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalJay.BikeInventory.Web", "RoyalJay.BikeInventory\RoyalJay.BikeInventory.Web.csproj", "{F5EE91F8-FE81-464B-95A7-B1DC61518281}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalJay.BikeInventory.Web.Tests", "RoyalJay.BikeInventory.Tests\RoyalJay.BikeInventory.Web.Tests.csproj", "{02431062-9843-4773-8B10-8362E917FD96}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalJay.BikeInventory.Data", "RoyalJay.BikeInventory.Data\RoyalJay.BikeInventory.Data.csproj", "{1CCDD097-2025-494F-8BC2-1C83459B9E04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalJay.BikeInventory.Web", "RoyalJay.BikeInventory.Web\RoyalJay.BikeInventory.Web.csproj", "{D3B1D994-F0EE-4C54-8F35-CAD69CFDD88E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyalJay.BikeInventory.Web.Tests", "RoyalJay.BikeInventory.Web.Tests\RoyalJay.BikeInventory.Web.Tests.csproj", "{33FED5EF-C534-4FDD-B7AC-F952618F40B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F5EE91F8-FE81-464B-95A7-B1DC61518281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F5EE91F8-FE81-464B-95A7-B1DC61518281}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F5EE91F8-FE81-464B-95A7-B1DC61518281}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F5EE91F8-FE81-464B-95A7-B1DC61518281}.Release|Any CPU.Build.0 = Release|Any CPU
-		{02431062-9843-4773-8B10-8362E917FD96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{02431062-9843-4773-8B10-8362E917FD96}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{02431062-9843-4773-8B10-8362E917FD96}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{02431062-9843-4773-8B10-8362E917FD96}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1CCDD097-2025-494F-8BC2-1C83459B9E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1CCDD097-2025-494F-8BC2-1C83459B9E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CCDD097-2025-494F-8BC2-1C83459B9E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CCDD097-2025-494F-8BC2-1C83459B9E04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3B1D994-F0EE-4C54-8F35-CAD69CFDD88E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3B1D994-F0EE-4C54-8F35-CAD69CFDD88E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3B1D994-F0EE-4C54-8F35-CAD69CFDD88E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3B1D994-F0EE-4C54-8F35-CAD69CFDD88E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33FED5EF-C534-4FDD-B7AC-F952618F40B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33FED5EF-C534-4FDD-B7AC-F952618F40B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33FED5EF-C534-4FDD-B7AC-F952618F40B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33FED5EF-C534-4FDD-B7AC-F952618F40B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
