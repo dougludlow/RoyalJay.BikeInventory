@@ -2,6 +2,10 @@
     ViewBag.Title = "Home";
 }
 
+<div class="loader" data-bind="css: { hidden: loaded() }"></div>
+
+@Html.Partial("_BikeEmpty")
+
 @Html.Partial("_BikeList")
 
 @Html.Partial("_BikeDetail")
