@@ -11,7 +11,12 @@
     <p><button type="button" class="btn btn-warning btn-lg refresh" onclick="location.reload();">Refresh</button></p>
 </div>
 
-<div class="jumbotron" data-bind="visible: loaded() && !fatal() && !bikes().length" style="display: none;">
+<div class="jumbotron" data-bind="visible: searching && loaded() && !fatal() && !bikes().length" style="display: none;">
+    <h1>Nope</h1>
+    <p>There aren't any items in the inventory that match "<span data-bind="text: searchText().trim()"></span>".</p>
+</div>
+
+<div class="jumbotron" data-bind="visible: !searching && loaded() && !fatal() && !bikes().length" style="display: none;">
     <h1>Welcome</h1>
     <p>Looks like the inventory is empty. Add some bikes to get started...</p>
     <p><button type="button" class="btn btn-primary btn-lg add">Add a Bike</button></p>
@@ -28,9 +33,13 @@
 
     <div class="navbar-form navbar-left search">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search Bikes" data-bind="value: searchText" />
+            <input type="text" class="form-control" placeholder="Search Bikes" data-bind="value: searchText, hasFocus: searching, valueUpdate : 'afterkeydown'" />
         </div>
-        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+        <button type="button" class="btn btn-default search" title="Search"><span class="glyphicon glyphicon-search"></span></button>
+    </div>
+
+    <div class="navbar-form navbar-left">
+        <button type="button" class="btn btn-warning refresh" title="Refresh items"><span class="glyphicon glyphicon-refresh"></span></button>
     </div>
 }
 

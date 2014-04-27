@@ -53,6 +53,15 @@
         $(document).on('click', '.btn.next', function () {
             inventory.vm.bikesPage(inventory.vm.bikesPage() + 1);
         });
+
+        $('.btn.search').on('click', function () {
+            if (inventory.vm.searchText())
+                inventory.vm.fetchBikes(inventory.vm.bikesQuery());
+        });
+
+        $('.btn.refresh').on('click', function () {
+            inventory.vm.fetchBikes(inventory.vm.bikesQuery());
+        });
     };
 
     function InventoryViewModel() {
@@ -69,21 +78,44 @@
         this.sizes = ko.observableArray([]);
         this.searchText = ko.observable('');
         this.editing = ko.observable(false);
+        this.searching = ko.observable(false);
         this.loaded = ko.observable(false);
         this.fatal = ko.observable(false);
 
+        self.searchText.subscribe(function (searchText) {
+            if (searchText.length === 1 && self.bikesPage() !== 0)
+                self.bikesPage(0)
+        });
+
         this.bikesQuery = ko.computed(function () {
-            return breeze.EntityQuery.from('Bikes')
+            var searchText = self.searchText().trim(),
+                query = breeze.EntityQuery.from('Bikes')
                 .expand('Type')
                 .skip(self.bikesPage() * self.pageSize())
                 .take(self.pageSize())
                 .orderByDesc('CreatedDate')
-                .inlineCount(true);
-        });
+                .inlineCount(true)
+                .using(self.manager);
+
+            if (searchText) {
+                var code = breeze.Predicate.create('Code', 'substringof', searchText),
+                    desc = breeze.Predicate.create('Description', 'substringof', searchText),
+                    brand = breeze.Predicate.create('Brand', 'substringof', searchText),
+                    model = breeze.Predicate.create('Model', 'substringof', searchText),
+                    color = breeze.Predicate.create('Color', 'substringof', searchText),
+                    type = breeze.Predicate.create('Type.Description', 'substringof', searchText),
+                    size = breeze.Predicate.create('Size.Description', 'substringof', searchText),
+                    predicate = breeze.Predicate.or([code, desc, brand, model, color, type, size]);
+
+                query = query.where(predicate);
+            }
+
+            return query;
+        }).extend({ rateLimit: { timeout: 250, method: "notifyWhenChangesStop" } });
 
         this.fetchBikes = function (query) {
             self.loaded(false);
-            query.using(self.manager).execute()
+            query.execute()
                 .then(function (data) {
                     self.bikesTotal(data.inlineCount)
                     self.bikes(data.results);

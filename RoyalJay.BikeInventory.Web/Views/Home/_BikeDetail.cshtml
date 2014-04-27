@@ -57,7 +57,7 @@
                     </div>
 
                     <div class="form-group" data-bind="validationElement: SizeId">
-                        @Html.LabelFor(model => model.SizeId, "SizeId", htmlAttributes: new { @class = "control-label col-sm-2" })
+                        @Html.LabelFor(model => model.SizeId, htmlAttributes: new { @class = "control-label col-sm-2" })
                         <div class="col-sm-10" data-bind="visible: $root.editing">
                             <select id="SizeId" class="form-control" data-bind="value: SizeId, options: $root.sizes, optionsText: 'Description', optionsValue: 'Id', optionsCaption: 'Choose...'"></select>
                             <span class="help-block" data-bind="validationMessage: SizeId"></span>
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="form-group" data-bind="validationElement: TypeId">
-                        @Html.LabelFor(model => model.TypeId, "TypeId", htmlAttributes: new { @class = "control-label col-sm-2" })
+                        @Html.LabelFor(model => model.TypeId, htmlAttributes: new { @class = "control-label col-sm-2" })
                         <div class="col-sm-10" data-bind="visible: $root.editing">
                             <select id="TypeId" class="form-control" data-bind="value: TypeId, options: $root.types, optionsText: 'Description', optionsValue: 'Id', optionsCaption: 'Choose...'"></select>
                             <span class="help-block" data-bind="validationMessage: TypeId"></span>
