@@ -38,7 +38,7 @@ namespace RoyalJay.BikeInventory.Data.Models
                 new BikeSize { Description = "S" },
                 new BikeSize { Description = "M" },
                 new BikeSize { Description = "L" },
-                new BikeSize { Description = "XL" },
+                new BikeSize { Description = "XL" }
             });
         }
     }
