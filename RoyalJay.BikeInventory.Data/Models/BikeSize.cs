@@ -6,7 +6,7 @@ using System.Text;
 
 namespace RoyalJay.BikeInventory.Data.Models
 {
-    public class BikeType
+    public class BikeSize
     {
         [Key]
         public int Id { get; set; }

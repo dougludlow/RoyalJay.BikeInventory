@@ -5,8 +5,10 @@
 
         var $modal = $('.bike-modal');
 
-        ko.validation.init({
-            insertMessages: false
+        ko.validation.configure({
+            insertMessages: false,
+            errorClass: 'has-error',
+            decorateElement: true
         });
 
         inventory.vm = new InventoryViewModel();
@@ -53,7 +55,10 @@
 
         this.bike = ko.observable();
         this.bikes = ko.observableArray([]);
+        this.bikesIndex = ko.observable(0);
+        this.bikesTotal = ko.observable(0);
         this.types = ko.observableArray([]);
+        this.sizes = ko.observableArray([]);
         this.editing = ko.observable(false);
         this.loaded = ko.observable(false);
         this.fatal = ko.observable(false);
@@ -81,6 +86,15 @@
                     .execute()
                     .then(function (data) {
                         self.types(data.results);
+                    })
+                    .fail(fatalError)
+                    .catch(fatalError);
+
+                breeze.EntityQuery.from('BikeSizes')
+                    .using(self.manager)
+                    .execute()
+                    .then(function (data) {
+                        self.sizes(data.results);
                     })
                     .fail(fatalError)
                     .catch(fatalError);

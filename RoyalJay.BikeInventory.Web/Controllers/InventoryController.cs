@@ -35,11 +35,18 @@ namespace RoyalJay.BikeInventory.Web.Controllers
             return provider.Context.Bikes;
         }
 
-        // GET: breeze/Inventory/Bikes
+        // GET: breeze/Inventory/BikeTypes
         [HttpGet]
         public IQueryable<BikeType> BikeTypes()
         {
             return provider.Context.BikeTypes;
+        }
+
+        // GET: breeze/Inventory/BikeSizes
+        [HttpGet]
+        public IQueryable<BikeSize> BikeSizes()
+        {
+            return provider.Context.BikeSizes;
         }
 
         // POST: breeze/Inventory/SaveChanges

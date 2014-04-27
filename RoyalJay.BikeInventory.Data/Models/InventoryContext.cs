@@ -17,6 +17,7 @@ namespace RoyalJay.BikeInventory.Data.Models
 
         public DbSet<Bike> Bikes { get; set; }
         public DbSet<BikeType> BikeTypes { get; set; }
+        public DbSet<BikeSize> BikeSizes { get; set; }
     }
 
     public class InventoryInitializer : DropCreateDatabaseIfModelChanges<InventoryContext> 
@@ -24,12 +25,20 @@ namespace RoyalJay.BikeInventory.Data.Models
         protected override void Seed(InventoryContext context)
         {
             context.BikeTypes.AddRange( new List<BikeType> {
-                new BikeType { Name = "Road" },
-                new BikeType { Name = "Mountain" },
-                new BikeType { Name = "BMX" },
-                new BikeType { Name = "Touring" },
-                new BikeType { Name = "Hybrid" },
-                new BikeType { Name = "Racing" }
+                new BikeType { Description = "Road" },
+                new BikeType { Description = "Mountain" },
+                new BikeType { Description = "BMX" },
+                new BikeType { Description = "Touring" },
+                new BikeType { Description = "Hybrid" },
+                new BikeType { Description = "Racing" }
+            });
+
+            context.BikeSizes.AddRange(new List<BikeSize> {
+                new BikeSize { Description = "XS" },
+                new BikeSize { Description = "S" },
+                new BikeSize { Description = "M" },
+                new BikeSize { Description = "L" },
+                new BikeSize { Description = "XL" },
             });
         }
     }

@@ -49,6 +49,7 @@
     <Compile Include="Models\Bike.cs" />
     <Compile Include="Models\BikeType.cs" />
     <Compile Include="Models\InventoryContext.cs" />
+    <Compile Include="Models\BikeSize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

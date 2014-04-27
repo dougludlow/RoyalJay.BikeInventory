@@ -23,19 +23,10 @@
                     <div class="form-group" data-bind="validationElement: Code">
                         @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-sm-2" })
                         <div class="col-sm-10" data-bind="visible: $root.editing">
-                            <input id=" code" type="text" class="form-control" data-bind="value: Code" />
+                            <input id="Code" type="text" class="form-control" data-bind="value: Code" />
                             <span class="text-danger" data-bind="validationMessage: Code"></span>
                         </div>
-                        <div class="col-sm-10" data-bind="visible: !$root.editing(), text: Code"></div>
-                    </div>
-
-                    <div class="form-group" data-bind="validationElement: Name">
-                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-sm-2" })
-                        <div class="col-sm-10" data-bind="visible: $root.editing">
-                            <input id="Name" type="text" class="form-control" data-bind="value: Name" />
-                            <span class="text-danger" data-bind="validationMessage: Name"></span>
-                        </div>
-                        <div class="col-sm-10" data-bind="visible: !$root.editing(), text: Name"></div>
+                        <div class="col-sm-10 form-control-static" data-bind="visible: !$root.editing(), text: Code"></div>
                     </div>
 
                     <div class="form-group" data-bind="validationElement: Description">
@@ -44,7 +35,7 @@
                             <input id="Description" type="text" class="form-control" data-bind="value: Description" />
                             <span class="text-danger" data-bind="validationMessage: Description"></span>
                         </div>
-                        <div class="col-sm-10" data-bind="visible: !$root.editing(), text: Description"></div>
+                        <div class="col-sm-10 form-control-static" data-bind="visible: !$root.editing(), text: Description"></div>
                     </div>
 
                     <div class="form-group" data-bind="validationElement: Brand">
@@ -53,7 +44,7 @@
                             <input id="Brand" type="text" class="form-control" data-bind="value: Brand" />
                             <span class="text-danger" data-bind="validationMessage: Brand"></span>
                         </div>
-                        <div class="col-sm-10" data-bind="visible: !$root.editing(), text: Brand"></div>
+                        <div class="col-sm-10 form-control-static" data-bind="visible: !$root.editing(), text: Brand"></div>
                     </div>
 
                     <div class="form-group" data-bind="validationElement: Model">
@@ -62,7 +53,16 @@
                             <input id="Model" type="text" class="form-control" data-bind="value: Model" />
                             <span class="text-danger" data-bind="validationMessage: Model"></span>
                         </div>
-                        <div class="col-sm-10" data-bind="visible: !$root.editing(), text: Model"></div>
+                        <div class="col-sm-10 form-control-static" data-bind="visible: !$root.editing(), text: Model"></div>
+                    </div>
+
+                    <div class="form-group" data-bind="validationElement: SizeId">
+                        @Html.LabelFor(model => model.SizeId, "SizeId", htmlAttributes: new { @class = "control-label col-sm-2" })
+                        <div class="col-sm-10" data-bind="visible: $root.editing">
+                            <input id="SizeId" type="text" class="form-control" data-bind="value: SizeId" />
+                            <span class="text-danger" data-bind="validationMessage: SizeId"></span>
+                        </div>
+                        <div class="col-sm-10 form-control-static" data-bind="visible: !$root.editing(), text: Size() && Size().Description()"></div>
                     </div>
 
                     <div class="form-group" data-bind="validationElement: Color">
@@ -71,7 +71,7 @@
                             <input id="Color" type="text" class="form-control" data-bind="value: Color" />
                             <span class="text-danger" data-bind="validationMessage: Color"></span>
                         </div>
-                        <div class="col-sm-10" data-bind="visible: !$root.editing(), text: Color"></div>
+                        <div class="col-sm-10 form-control-static" data-bind="visible: !$root.editing(), text: Color"></div>
                     </div>
 
                     <div class="form-group" data-bind="validationElement: TypeId">
@@ -80,7 +80,7 @@
                             <input id="TypeId" type="text" class="form-control" data-bind="value: TypeId" />
                             <span class="text-danger" data-bind="validationMessage: TypeId"></span>
                         </div>
-                        <div class="col-sm-10" data-bind="visible: !$root.editing(), text: TypeId"></div>
+                        <div class="col-sm-10 form-control-static" data-bind="visible: !$root.editing(), text: Type() && Type().Description()"></div>
                     </div>
 
                     <div class="form-group" data-bind="validationElement: Price">
@@ -89,7 +89,7 @@
                             <input id="Price" type="text" class="form-control" data-bind="value: Price" />
                             <span class="text-danger" data-bind="validationMessage: Price"></span>
                         </div>
-                        <div class="col-sm-10" data-bind="visible: !$root.editing(), text: Price"></div>
+                        <div class="col-sm-10 form-control-static" data-bind="visible: !$root.editing(), text: Price"></div>
                     </div>
 
                     <div class="form-group" data-bind="validationElement: Quantity">
@@ -98,18 +98,18 @@
                             <input id="Quantity" type="text" class="form-control" data-bind="value: Quantity" />
                             <span class="text-danger" data-bind="validationMessage: Quantity"></span>
                         </div>
-                        <div class="col-sm-10" data-bind="visible: !$root.editing(), text: Quantity"></div>
+                        <div class="col-sm-10 form-control-static" data-bind="visible: !$root.editing(), text: Quantity"></div>
                     </div>
 
                     <div class="form-group" data-bind="validationElement: InStorage">
                         @Html.LabelFor(model => model.InStorage, htmlAttributes: new { @class = "control-label col-sm-2" })
-                        <div class="col-sm-10" data-bind="visible: $root.editing">
+                        <div class="col-sm-10 form-control-static" data-bind="visible: $root.editing">
                             <div class="checkbox">
                                 <input id="InStorage" type="checkbox" data-bind="value: InStorage" />
                                 <span class="text-danger" data-bind="validationMessage: InStorage"></span>
                             </div>
                         </div>
-                        <div class="col-sm-10" data-bind="visible: !$root.editing(), text: InStorage() ? 'Yes' : 'No'"></div>
+                        <div class="col-sm-10 form-control-static" data-bind="visible: !$root.editing(), text: InStorage() ? 'Yes' : 'No'"></div>
                     </div>
 
                 </div>
@@ -128,6 +128,3 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

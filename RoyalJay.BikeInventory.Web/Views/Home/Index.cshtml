@@ -21,6 +21,19 @@
 
 @Html.Partial("_BikeDetail")
 
+@section NavBar {
+    <div class="navbar-form navbar-left">
+        <button type="button" class="btn btn-primary add">Add Bike</button>
+    </div>
+
+    <div class="navbar-form navbar-left search">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+    </div>
+}
+
 @section Scripts {
     @Scripts.Render("~/bundles/app")
 }

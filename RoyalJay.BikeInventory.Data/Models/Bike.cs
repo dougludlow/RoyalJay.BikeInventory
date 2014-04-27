@@ -15,9 +15,6 @@ namespace RoyalJay.BikeInventory.Data.Models
         [Required, MaxLength(50)]
         public string Code { get; set; }
 
-        [Required, MaxLength(50)]
-        public string Name { get; set; }
-
         [MaxLength(255)]
         public string Description { get; set; }
 
@@ -26,6 +23,9 @@ namespace RoyalJay.BikeInventory.Data.Models
 
         [Required, MaxLength(50)]
         public string Model { get; set; }
+
+        [Display(Name = "Size")]
+        public int SizeId { get; set; }
 
         [Required, MaxLength(50)]
         public string Color { get; set; }
@@ -46,6 +46,7 @@ namespace RoyalJay.BikeInventory.Data.Models
         [Display(Name = "Last Modified By")]
         public string LastModifiedUsername { get; set; }
 
+        public virtual BikeSize Size { get; set; }
         public virtual BikeType Type { get; set; }
     }
 }
