@@ -40,8 +40,14 @@ namespace RoyalJay.BikeInventory.Data.Models
         [Display(Name = "In Storage?")]
         public bool InStorage { get; set; }
 
+        [Display(Name = "Created")]
+        public DateTime CreatedDate { get; set; }
+
+        [Display(Name = "Created By")]
+        public string CreatedUsername { get; set; }
+
         [Display(Name = "Last Modified")]
-        public DateTime LastModified { get; set; }
+        public DateTime? LastModifiedDate { get; set; }
 
         [Display(Name = "Last Modified By")]
         public string LastModifiedUsername { get; set; }

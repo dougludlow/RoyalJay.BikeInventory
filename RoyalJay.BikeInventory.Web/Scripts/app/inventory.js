@@ -11,6 +11,25 @@
             decorateElement: true
         });
 
+        function pad(number) {
+            if (number < 10) {
+                return '0' + number;
+            }
+            return number;
+        }
+
+        Date.prototype.toShortDateTimeString = function () {
+            var month = pad(this.getMonth() + 1),
+                day = pad(this.getDate()),
+                year = this.getFullYear(),
+                h = this.getHours() % 12,
+                hours = pad(h === 0 ? 12 : h),
+                minutes = pad(this.getMinutes()),
+                period = hours > 11 ? 'AM' : 'PM';
+
+            return month + '/' + day + '/' + year + ' ' + hours + ':' + minutes + ' ' + period;
+        }
+
         inventory.vm = new InventoryViewModel();
         inventory.vm.init();
         ko.applyBindings(inventory.vm);
@@ -28,7 +47,7 @@
 
         $(document).on('click', '.btn.delete', function () {
             var bike = ko.dataFor(this);
-            if (confirm('Are you sure you want to remove the ' + bike.Name() + ' from the inventory?'))
+            if (confirm('Are you sure you want to remove the ' + bike.Description() + ' from the inventory?'))
                 inventory.vm.deleteBike(bike);
         });
 
@@ -57,6 +76,7 @@
         this.bikes = ko.observableArray([]);
         this.bikesIndex = ko.observable(0);
         this.bikesTotal = ko.observable(0);
+        this.pageSize = ko.observable(15);
         this.types = ko.observableArray([]);
         this.sizes = ko.observableArray([]);
         this.editing = ko.observable(false);
@@ -72,9 +92,13 @@
 
                 breeze.EntityQuery.from('Bikes')
                     .expand('Type')
+                    .take(self.pageSize())
+                    .inlineCount(true)
                     .using(self.manager)
                     .execute()
                     .then(function (data) {
+                        console.log(data);
+                        self.bikesTotal(data.inlineCount)
                         self.bikes(data.results);
                         self.loaded(true);
                     })
@@ -134,7 +158,9 @@
                     if (state.isAdded() || state.isModified()) {
                         self.manager.saveChanges()
                             .then(function (data) {
-                                self.bikes.push(bike);
+                                if (state.isAdded())
+                                    self.bikes.unshift(bike);
+
                                 typeof success === 'function' && success();
                             })
                             .fail(function (error) {

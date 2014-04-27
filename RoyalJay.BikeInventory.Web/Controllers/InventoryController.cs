@@ -21,6 +21,31 @@ namespace RoyalJay.BikeInventory.Web.Controllers
     {
         readonly EFContextProvider<InventoryContext> provider = new EFContextProvider<InventoryContext>();
 
+        public InventoryController()
+        {
+            provider.BeforeSaveEntityDelegate = (e) =>
+            {
+                if (e.Entity.GetType() == typeof(Bike))
+                {
+                    var bike = e.Entity as Bike;
+
+                    if (e.EntityState == Breeze.ContextProvider.EntityState.Added)
+                    {
+                        bike.CreatedDate = DateTime.UtcNow;
+                        bike.CreatedUsername = RequestContext.Principal.Identity.Name;
+                    }
+                    else if (e.EntityState == Breeze.ContextProvider.EntityState.Modified)
+                    {
+                        bike.LastModifiedDate = DateTime.UtcNow;
+                        bike.LastModifiedUsername = RequestContext.Principal.Identity.Name;
+                        e.ForceUpdate = true;
+                    }
+                }
+
+                return true;
+            };
+        }
+
         // GET: breeze/Inventory/Metadata
         [HttpGet]
         public string Metadata()

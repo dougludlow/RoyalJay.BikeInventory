@@ -112,6 +112,29 @@
                         <div class="col-sm-10 form-control-static" data-bind="visible: !$root.editing(), text: InStorage() ? 'Yes' : 'No'"></div>
                     </div>
 
+                    <!-- ko if: !$root.editing() -->
+
+                    <div class="form-group text-muted">
+                        <label class="control-label col-sm-2">Created</label>
+                        <div class="form-control-static col-sm-10">
+                            <span data-bind="text: CreatedDate().toShortDateTimeString()"></span>
+                            - <span data-bind="text: CreatedUsername"></span>
+                        </div>
+                    </div>
+
+                    <!-- ko if: LastModifiedDate() != null -->
+
+                    <div class="form-group text-muted">
+                        <label class="control-label col-sm-2">Modified</label>
+                        <div class="form-control-static col-sm-10">
+                            <span data-bind="text: LastModifiedDate().toShortDateTimeString()"></span>
+                            - <span data-bind="text: LastModifiedUsername"></span>
+                        </div>
+                    </div>
+
+                    <!-- /ko -->
+                    <!-- /ko -->
+
                 </div>
             </div>
 
