@@ -45,6 +45,14 @@
                 $modal.modal('hide');
             });
         });
+
+        $(document).on('click', '.btn.prev', function () {
+            inventory.vm.bikesPage(inventory.vm.bikesPage() - 1);
+        });
+
+        $(document).on('click', '.btn.next', function () {
+            inventory.vm.bikesPage(inventory.vm.bikesPage() + 1);
+        });
     };
 
     function InventoryViewModel() {
@@ -54,14 +62,36 @@
 
         this.bike = ko.observable();
         this.bikes = ko.observableArray([]);
-        this.bikesIndex = ko.observable(0);
+        this.bikesPage = ko.observable(0);
         this.bikesTotal = ko.observable(0);
         this.pageSize = ko.observable(15);
         this.types = ko.observableArray([]);
         this.sizes = ko.observableArray([]);
+        this.searchText = ko.observable('');
         this.editing = ko.observable(false);
         this.loaded = ko.observable(false);
         this.fatal = ko.observable(false);
+
+        this.bikesQuery = ko.computed(function () {
+            return breeze.EntityQuery.from('Bikes')
+                .expand('Type')
+                .skip(self.bikesPage() * self.pageSize())
+                .take(self.pageSize())
+                .orderByDesc('CreatedDate')
+                .inlineCount(true);
+        });
+
+        this.fetchBikes = function (query) {
+            self.loaded(false);
+            query.using(self.manager).execute()
+                .then(function (data) {
+                    self.bikesTotal(data.inlineCount)
+                    self.bikes(data.results);
+                    self.loaded(true);
+                })
+                .fail(fatalError)
+                .catch(fatalError);
+        };
 
         this.init = function () {
             self.manager.fetchMetadata().then(function () {
@@ -71,19 +101,8 @@
                     bike.Price = bike.Price.extend({ numeric: 2 });
                 });
 
-                breeze.EntityQuery.from('Bikes')
-                    .expand('Type')
-                    .take(self.pageSize())
-                    .inlineCount(true)
-                    .using(self.manager)
-                    .execute()
-                    .then(function (data) {
-                        self.bikesTotal(data.inlineCount)
-                        self.bikes(data.results);
-                        self.loaded(true);
-                    })
-                    .fail(fatalError)
-                    .catch(fatalError);
+                self.bikesQuery.subscribe(self.fetchBikes);
+                self.bikesQuery.notifySubscribers(self.bikesQuery());
 
                 breeze.EntityQuery.from('BikeTypes')
                     .using(self.manager)
@@ -140,8 +159,10 @@
                     if (state.isAdded() || state.isModified()) {
                         self.manager.saveChanges()
                             .then(function (data) {
-                                if (state.isAdded())
+                                if (state.isAdded()) {
                                     self.bikes.unshift(bike);
+                                    self.bikesTotal(self.bikesTotal() + 1);
+                                }
 
                                 typeof success === 'function' && success();
                             })
@@ -161,6 +182,7 @@
                 self.manager.saveChanges()
                     .then(function (data) {
                         self.bikes.remove(bike);
+                        self.bikesTotal(self.bikesTotal() - 1);
                     })
                     .fail(function (error) {
                         console.log(error);
@@ -177,9 +199,13 @@
                 var $element = $(element);
                 if (element.nodeType === 1) {
                     $element.addClass('bike-hidden');
-                    setTimeout(function () {
+
+                    if (self.loaded())
+                        setTimeout(function () {
+                            $element.remove();
+                        }, 350);
+                    else
                         $element.remove();
-                    }, 350);
                 }
                 else
                     $element.remove();

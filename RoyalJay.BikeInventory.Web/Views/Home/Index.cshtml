@@ -2,7 +2,7 @@
     ViewBag.Title = "Home";
 }
 
-<div class="loader" data-bind="css: { hidden: loaded() }"></div>
+<div class="loader" data-bind="css: { 'loader-hidden': loaded() }"></div>
 
 <div class="jumbotron text-danger" data-bind="visible: fatal" style="display: none;">
     <h1>Error</h1>
@@ -28,7 +28,7 @@
 
     <div class="navbar-form navbar-left search">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search Bikes">
+            <input type="text" class="form-control" placeholder="Search Bikes" data-bind="value: searchText" />
         </div>
         <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
     </div>
