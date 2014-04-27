@@ -2,7 +2,6 @@
     'use strict';
 
     inventory.init = function () {
-
         var $modal = $('.bike-modal');
 
         ko.validation.configure({
@@ -10,25 +9,6 @@
             errorClass: 'has-error',
             decorateElement: true
         });
-
-        function pad(number) {
-            if (number < 10) {
-                return '0' + number;
-            }
-            return number;
-        }
-
-        Date.prototype.toShortDateTimeString = function () {
-            var month = pad(this.getMonth() + 1),
-                day = pad(this.getDate()),
-                year = this.getFullYear(),
-                h = this.getHours() % 12,
-                hours = pad(h === 0 ? 12 : h),
-                minutes = pad(this.getMinutes()),
-                period = hours > 11 ? 'AM' : 'PM';
-
-            return month + '/' + day + '/' + year + ' ' + hours + ':' + minutes + ' ' + period;
-        }
 
         inventory.vm = new InventoryViewModel();
         inventory.vm.init();
@@ -88,6 +68,7 @@
 
                 self.manager.metadataStore.registerEntityTypeCtor('Bike', null, function (bike) {
                     inventory.helpers.addValidationRules(bike);
+                    bike.Price = bike.Price.extend({ numeric: 2 });
                 });
 
                 breeze.EntityQuery.from('Bikes')
@@ -97,7 +78,6 @@
                     .using(self.manager)
                     .execute()
                     .then(function (data) {
-                        console.log(data);
                         self.bikesTotal(data.inlineCount)
                         self.bikes(data.results);
                         self.loaded(true);
@@ -131,10 +111,12 @@
                     bike = bikeType.createEntity();
 
                 self.editBike(bike);
+                
             };
 
             this.editBike = function (bike) {
                 self.bike(bike);
+                ko.validation.group(self.bike()).showAllMessages(false);
                 self.editing(true);
             };
 
@@ -210,6 +192,53 @@
             self.loaded(true);
         }
     }
+
+    function pad(number) {
+        if (number < 10)
+            return '0' + number;
+        return number;
+    }
+
+    Date.prototype.toShortDateTimeString = function () {
+        var month = pad(this.getMonth() + 1),
+            day = pad(this.getDate()),
+            year = this.getFullYear(),
+            h = this.getHours() % 12,
+            hours = pad(h === 0 ? 12 : h),
+            minutes = pad(this.getMinutes()),
+            period = hours > 11 ? 'AM' : 'PM';
+
+        return month + '/' + day + '/' + year + ' ' + hours + ':' + minutes + ' ' + period;
+    };
+
+    ko.extenders.numeric = function (target, precision) {
+        //create a writeable computed observable to intercept writes to our observable
+        var result = ko.computed({
+            read: target,  //always return the original observables value
+            write: function (newValue) {
+                var current = target(),
+                    roundingMultiplier = Math.pow(10, precision),
+                    newValueAsNum = isNaN(newValue) ? 0 : parseFloat(+newValue),
+                    valueToWrite = Math.round(newValueAsNum * roundingMultiplier) / roundingMultiplier;
+
+                //only write if it changed
+                if (valueToWrite !== current) {
+                    target(valueToWrite);
+                } else {
+                    //if the rounded value is the same, but a different value was written, force a notification for the current field
+                    if (newValue !== current) {
+                        target.notifySubscribers(valueToWrite);
+                    }
+                }
+            }
+        }).extend({ notify: 'always' });
+
+        //initialize with current value to make sure it is rounded appropriately
+        result(target());
+
+        //return the new computed observable
+        return result;
+    };
 
     inventory.helpers = (function () {
         var foreignKeyInvalidValue = 0;

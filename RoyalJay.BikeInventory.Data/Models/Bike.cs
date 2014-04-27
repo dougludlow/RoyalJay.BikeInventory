@@ -15,7 +15,7 @@ namespace RoyalJay.BikeInventory.Data.Models
         [Required, MaxLength(50)]
         public string Code { get; set; }
 
-        [MaxLength(255)]
+        [Required, MaxLength(255)]
         public string Description { get; set; }
 
         [Required, MaxLength(50)]

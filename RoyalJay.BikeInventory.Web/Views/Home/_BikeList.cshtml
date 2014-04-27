@@ -26,7 +26,7 @@
                 <td data-bind="text: Model"></td>
                 <td data-bind="text: Color"></td>*@
                 <td data-bind="text: Type() && Type().Description()"></td>
-                <td data-bind="text: Price"></td>
+                <td data-bind="text: '$' + Price().toFixed(2)"></td>
                 <td data-bind="text: Quantity"></td>
                 <td data-bind="text: InStorage() ? 'Yes' : 'No'"></td>
                 <td style="text-align: right;">
