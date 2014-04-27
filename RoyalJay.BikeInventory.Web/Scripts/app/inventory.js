@@ -24,11 +24,17 @@
             $modal.modal();
         });
 
+        $(document).on('click', '.btn.delete', function () {
+            var bike = ko.dataFor(this);
+            if (confirm('Are you sure you want to remove the ' + bike.Name() + ' from the inventory?'))
+                inventory.vm.deleteBike(bike);
+        });
+
         $(document).on('click', '.btn.edit', function () {
             inventory.vm.editing(true);
         });
 
-        $(document).on('click', '.btn.create', function () {
+        $(document).on('click', '.btn.add', function () {
             inventory.vm.createBike();
             $modal.modal();
         });
@@ -126,6 +132,35 @@
                 }
                 else 
                     errors.showAllMessages();
+            };
+
+            this.deleteBike = function (bike) {
+                bike.entityAspect.setDeleted();
+                self.manager.saveChanges()
+                    .then(function (data) {
+                        self.bikes.remove(bike);
+                    })
+                    .fail(function (error) {
+                        console.log(error);
+                    })
+                    .catch(fatalError);
+            };
+
+            this.afterAddBike = function (element, index, bike) {
+                if (element.nodeType === 1)
+                    $(element).removeClass('bike-hidden');
+            };
+
+            this.beforeRemoveBike = function (element, index, bike) {
+                var $element = $(element);
+                if (element.nodeType === 1) {
+                    $element.addClass('bike-hidden');
+                    setTimeout(function () {
+                        $element.remove();
+                    }, 350);
+                }
+                else
+                    $element.remove();
             };
         };
 

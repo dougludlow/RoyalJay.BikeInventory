@@ -33,4 +33,14 @@ textarea {
 .loader.hidden {
   opacity: 0;
 }
+.bike-list tr {
+  opacity: 1;
+  -moz-transition: opacity .35s;
+  -o-transition: opacity .35s;
+  -webkit-transition: opacity .35s;
+  transition: opacity .35s;
+}
+.bike-list tr.bike-hidden {
+  opacity: 0;
+}
 /*# sourceMappingURL=style.css.map */
