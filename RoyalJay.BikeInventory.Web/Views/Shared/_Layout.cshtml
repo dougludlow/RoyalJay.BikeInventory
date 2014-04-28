@@ -18,7 +18,7 @@
                 </button>
                 @Html.ActionLink("Bike Inventory", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">                
+            <div class="navbar-collapse collapse">
                 @RenderSection("NavBar", required: false)
                 @Html.Partial("_LoginPartial")
                 <ul class="nav navbar-nav navbar-right">
@@ -55,6 +55,17 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-50446160-1', 'rjbi.azurewebsites.net');
+        ga('send', 'pageview');
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>
