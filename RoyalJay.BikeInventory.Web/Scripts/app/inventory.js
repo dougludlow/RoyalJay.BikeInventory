@@ -204,6 +204,9 @@
                             })
                             .catch(fatalError);
                     }
+                    else {
+                        typeof success === 'function' && success();
+                    }
                 }
                 else 
                     errors.showAllMessages();
