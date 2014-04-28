@@ -60,7 +60,7 @@
         });
 
         $('.btn.refresh').on('click', function () {
-            inventory.vm.fetchBikes(inventory.vm.bikesQuery());
+            inventory.vm.refreshBikes();
         });
     };
 
