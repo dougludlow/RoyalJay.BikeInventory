@@ -56,7 +56,7 @@
 
         $('.btn.search').on('click', function () {
             if (inventory.vm.searchText())
-                inventory.vm.fetchBikes(inventory.vm.bikesQuery());
+                inventory.vm.refreshBikes();
         });
 
         $('.btn.refresh').on('click', function () {
@@ -73,16 +73,24 @@
         this.bikes = ko.observableArray([]);
         this.bikesPage = ko.observable(0);
         this.bikesTotal = ko.observable(0);
-        this.pageSize = ko.observable(15);
+        this.pageSize = ko.observable(2);
         this.types = ko.observableArray([]);
         this.sizes = ko.observableArray([]);
         this.searchText = ko.observable('');
         this.editing = ko.observable(false);
-        this.searching = ko.observable(false);
         this.loaded = ko.observable(false);
         this.fatal = ko.observable(false);
 
-        self.searchText.subscribe(function (searchText) {
+        this.bikeCount = ko.computed(function () {
+            return self.bikes().length;
+        });
+
+        this.bikeCount.subscribe(function (count) {
+            if (count === 0 && self.bikesTotal() > 0)
+                self.refreshBikes();
+        });
+
+        this.searchText.subscribe(function (searchText) {
             if (searchText.length === 1 && self.bikesPage() !== 0)
                 self.bikesPage(0)
         });
@@ -111,7 +119,7 @@
             }
 
             return query;
-        }).extend({ rateLimit: { timeout: 250, method: "notifyWhenChangesStop" } });
+        });//.extend({ rateLimit: { timeout: 250, method: "notifyWhenChangesStop" } });
 
         this.fetchBikes = function (query) {
             self.loaded(false);
@@ -123,6 +131,10 @@
                 })
                 .fail(fatalError)
                 .catch(fatalError);
+        };
+
+        this.refreshBikes = function() {
+            inventory.vm.fetchBikes(inventory.vm.bikesQuery());
         };
 
         this.init = function () {
