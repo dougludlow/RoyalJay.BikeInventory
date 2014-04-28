@@ -11,7 +11,7 @@
     <p><button type="button" class="btn btn-warning btn-lg refresh" onclick="location.reload();">Refresh</button></p>
 </div>
 
-<div class="jumbotron" data-bind="visible: searching() && loaded() && !fatal() && !bikes().length" style="display: none;">
+<div class="jumbotron" data-bind="visible: searching() && searchText() && loaded() && !fatal() && !bikes().length" style="display: none;">
     <h1>Nope</h1>
     <p>There aren't any items in the inventory that match "<span data-bind="text: searchText().trim()"></span>".</p>
 </div>
