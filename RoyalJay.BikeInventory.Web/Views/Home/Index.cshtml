@@ -16,7 +16,7 @@
     <p>There aren't any items in the inventory that match "<span data-bind="text: searchText().trim()"></span>".</p>
 </div>
 
-<div class="jumbotron" data-bind="visible: !searching() && loaded() && !fatal() && !bikes().length" style="display: none;">
+<div class="jumbotron" data-bind="visible: !searching() && !searchText() && loaded() && !fatal() && !bikes().length" style="display: none;">
     <h1>Welcome</h1>
     <p>Looks like the inventory is empty. Add some bikes to get started...</p>
     <p><button type="button" class="btn btn-primary btn-lg add">Add a Bike</button></p>
