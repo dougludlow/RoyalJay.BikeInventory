@@ -62,6 +62,8 @@
         $('.btn.refresh').on('click', function () {
             inventory.vm.fetchBikes(inventory.vm.bikesQuery());
         });
+
+        $('.info').popover();
     };
 
     function InventoryViewModel() {
@@ -73,7 +75,7 @@
         this.bikes = ko.observableArray([]);
         this.bikesPage = ko.observable(0);
         this.bikesTotal = ko.observable(0);
-        this.pageSize = ko.observable(2);
+        this.pageSize = ko.observable(15);
         this.types = ko.observableArray([]);
         this.sizes = ko.observableArray([]);
         this.searchText = ko.observable('');

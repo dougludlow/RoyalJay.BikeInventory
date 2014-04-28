@@ -11,12 +11,12 @@
     <p><button type="button" class="btn btn-warning btn-lg refresh" onclick="location.reload();">Refresh</button></p>
 </div>
 
-<div class="jumbotron" data-bind="visible: searchText() && loaded() && !fatal() && !bikes().length" style="display: none;">
+<div class="jumbotron nope" data-bind="css: { visible: searchText() && loaded() && !fatal() && !bikes().length }">
     <h1>Nope</h1>
     <p>There aren't any items in the inventory that match "<span data-bind="text: searchText().trim()"></span>".</p>
 </div>
 
-<div class="jumbotron" data-bind="visible: !searchText() && loaded() && !fatal() && !bikes().length" style="display: none;">
+<div class="jumbotron none" data-bind="css: { visible: !searchText() && loaded() && !fatal() && !bikes().length }">
     <h1>Welcome</h1>
     <p>Looks like the inventory is empty. Add some bikes to get started...</p>
     <p><button type="button" class="btn btn-primary btn-lg add">Add a Bike</button></p>

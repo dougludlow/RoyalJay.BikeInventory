@@ -21,15 +21,36 @@
             <div class="navbar-collapse collapse">                
                 @RenderSection("NavBar", required: false)
                 @Html.Partial("_LoginPartial")
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" class="info" data-toggle="modal" data-target=".modal.about">
+                            <span class="glyphicon glyphicon-info-sign"></span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Douglas Ludlow</p>
-        </footer>
+    </div>
+
+    <div class="modal fade about" tabindex="-1" role="dialog" aria-labelledby="about" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">About</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Royal Jay Bike Inventory</p>
+                    <p>&copy; @DateTime.Now.Year - Douglas Ludlow</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
