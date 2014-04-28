@@ -179,7 +179,7 @@ namespace RoyalJay.BikeInventory.Web.Controllers
         {
             return View();
         }
-	
+    
         //
         // GET: /Account/ResetPassword
         [AllowAnonymous]
