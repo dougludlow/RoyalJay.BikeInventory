@@ -276,10 +276,11 @@
         var month = pad(this.getMonth() + 1),
             day = pad(this.getDate()),
             year = this.getFullYear(),
-            h = this.getHours() % 12,
-            hours = pad(h === 0 ? 12 : h),
+            h = this.getHours(),
+            h2 = h % 12,
+            hours = pad(h2 === 0 ? 12 : h2),
             minutes = pad(this.getMinutes()),
-            period = hours > 11 ? 'AM' : 'PM';
+            period = h > 11 ? 'PM' : 'AM';
 
         return month + '/' + day + '/' + year + ' ' + hours + ':' + minutes + ' ' + period;
     };
